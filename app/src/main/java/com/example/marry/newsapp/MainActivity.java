@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>>{
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
     /**
      * Constant value for the articles loader ID. We can choose any integer.
@@ -25,17 +25,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      */
     private static final int ARTICLE_LOADER_ID = 1;
 
-    /** Tag for the log messages */
-    public static final String LOG_TAG = MainActivity.class.getName();
 
-    /** URL for the articles */
+    /**
+     * URL for the articles
+     */
     private static final String ARTICLES_REQUEST_URL =
             "https://content.guardianapis.com/search?q=simon%20halep&api-key=test";
 
-    /** Adapter for the list of earthquakes */
+    /**
+     * Adapter for the list of articles
+     */
     private NewsAdapter mAdapter;
 
-    /** TextView that is displayed when the list is empty */
+    /**
+     * TextView that is displayed when the list is empty
+     */
     private TextView mEmptyStateTextView;
 
     @Override
@@ -44,14 +48,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         // Find a reference to the {@link ListView} in the layout
-        ListView listView =  findViewById(R.id.list_view);
+        ListView listView = findViewById(R.id.list_view);
 
-        mEmptyStateTextView =  findViewById(R.id.empty_view);
+        mEmptyStateTextView = findViewById(R.id.empty_view);
         listView.setEmptyView(mEmptyStateTextView);
 
 
         // Create a new adapter that takes an empty list of articles as input
-        mAdapter = new NewsAdapter(this,0, new ArrayList<Article>());
+        mAdapter = new NewsAdapter(this, 0, new ArrayList<Article>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
@@ -66,10 +70,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Article currentArticle = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri earthquakeUri = Uri.parse(currentArticle.getUrl());
+                Uri articleUri = Uri.parse(currentArticle.getUrl());
 
                 // Create a new intent to view the earthquake URI
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
 
                 // Send the intent to launch a new activity
                 startActivity(websiteIntent);
@@ -112,20 +116,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     // We need onLoadFinished(), where we'll do exactly what we did in onPostExecute(), and use
-    // the earthquake data to update our UI - by updating the dataset in the adapter.
+    // the article data to update our UI - by updating the dataset in the adapter.
     @Override
     public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
         // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
-        // Set empty state text to display "No earthquakes found."
+        // Set empty state text to display "No articles found."
         mEmptyStateTextView.setText(R.string.no_articles);
 
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous article data
         mAdapter.clear();
 
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // If there is a valid list of {@link Article}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);
@@ -134,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     // And we need onLoaderReset(), we're we're being informed that the data from our loader
     // is no longer valid. This isn't actually a case that's going to come up with our simple
-    // loader, but the correct thing to do is to remove all the earthquake data from our UI by
+    // loader, but the correct thing to do is to remove all the articles data from our UI by
     // clearing out the adapter’s data set.
     @Override
     public void onLoaderReset(Loader<List<Article>> loader) {

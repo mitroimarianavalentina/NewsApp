@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#2B3D4D</color>
+    <color name="colorPrimaryDark">#2B3D4D</color>
     <color name="colorAccent">#FF4081</color>
+    
+    <color name="sport_section"> #2B3D4D </color>
+    <color name="other_sections"> #E75F40 </color>
+    <color name="section"> #2B3D4D </color>
+    <color name="background"> #f9ffe5 </color>
+    <color name="separator"> #8c8c8c </color>
+    <color name="title_color"> #000000 </color>
+    <color name="section_color"> #ffffff </color>
 </resources>

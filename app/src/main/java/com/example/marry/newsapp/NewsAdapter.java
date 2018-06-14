@@ -1,21 +1,29 @@
 package com.example.marry.newsapp;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NewsAdapter extends ArrayAdapter<Article> {
 
+    private static final String DATE_SEPARATOR = "T";
+
+
     /**
      * constructor of the class
-     * @param context the context
+     *
+     * @param context  the context
      * @param resource the resource
      * @param articles the list of articles
      */
@@ -23,15 +31,19 @@ public class NewsAdapter extends ArrayAdapter<Article> {
         super(context, resource, articles);
     }
 
-//    /**
-//     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
-//     */
-//    private String formatDate(Date dateObject) {
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
-//        return dateFormat.format(dateObject);
-//    }
-
-
+    private int getSectionColor(String section) {
+        int contextColorResourceId;
+        switch (section) {
+            case "Sport":
+                contextColorResourceId = R.color.sport_section;
+                break;
+            default:
+                contextColorResourceId = R.color.other_sections;
+                break;
+        }
+        //returneaza magnitudeCoolorResourceId ca un integer ca sa poata fi folosit si afisat in GradientDrawable,
+        return ContextCompat.getColor(getContext(), contextColorResourceId);
+    }
 
 
     @NonNull
@@ -51,19 +63,41 @@ public class NewsAdapter extends ArrayAdapter<Article> {
 
 
         // Find the TextView with view ID section
-        TextView sectionView =  listItemView.findViewById(R.id.section);
+        TextView sectionView = listItemView.findViewById(R.id.section);
         // Display the section of the current article in that TextView
         sectionView.setText(currentArticle.getSection());
 
         // Find the TextView with view ID title
-        TextView titleView =  listItemView.findViewById(R.id.title);
+        TextView titleView = listItemView.findViewById(R.id.title);
         // Display the title of the current article in that TextView
         titleView.setText(currentArticle.getTitle());
 
+        //retains the date after being split
+        String date;
+
+        String originalDate = currentArticle.getDate();
         // Find the TextView with view ID date
-        TextView dateView =  listItemView.findViewById(R.id.date);
-        // Display the date of the current article in that TextView
-        dateView.setText(currentArticle.getDate());
+        TextView dateView = listItemView.findViewById(R.id.date);
+
+        if (originalDate.contains(DATE_SEPARATOR)) {
+            String[] parts = originalDate.split(DATE_SEPARATOR);
+            date = parts[0];
+            // Display the date of the current article in that TextView
+            dateView.setText(date);
+        } else {
+            // Display the date of the current article in that TextView
+            dateView.setText(currentArticle.getDate());
+        }
+
+        // Set the proper background color on the section circle.
+        // Fetch the background from the TextView, which is a GradientDrawable.
+        GradientDrawable sectionCircle = (GradientDrawable) sectionView.getBackground();
+
+        // Get the appropriate background color based on the current section
+        int sectionColor = getSectionColor(currentArticle.getSection());
+
+        // Set the color on the section circle
+        sectionCircle.setColor(sectionColor);
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;

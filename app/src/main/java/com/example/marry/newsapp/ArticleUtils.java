@@ -19,18 +19,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Helper methods related to requesting and receiving news
+ * Helper methods related to requesting and receiving articles
  */
-public final class Utils {
-    /** Tag for the log messages */
-    private static final String LOG_TAG = Utils.class.getName();
+public class ArticleUtils {
 
     /**
-     * Create a private constructor because no one should ever create a {@link Utils} object.
-     * This class is only meant to hold static variables and methods, which can be accessed
-     * directly from the class name Utils (and an object instance of Utils is not needed).
+     * Tag for the log messages
      */
-    private Utils() {
+    private static final String LOG_TAG = ArticleUtils.class.getName();
+
+    /**
+     * Create a private constructor because no one should ever create a {@link ArticleUtils} object.
+     * This class is only meant to hold static variables and methods, which can be accessed
+     * directly from the class name ArticleUtils (and an object instance of ArticleUtils is not needed).
+     */
+    private ArticleUtils() {
     }
 
     /**
@@ -116,7 +119,7 @@ public final class Utils {
             return null;
         }
 
-        // Create an empty ArrayList that we can start adding the news to
+        // Create an empty ArrayList that we can start adding the articles to
         List<Article> articles = new ArrayList<>();
 
         // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
@@ -126,11 +129,14 @@ public final class Utils {
             // build up a list of Article objects with the corresponding data.
             // get the info from the JSON response, after creating a JSON Object
             JSONObject baseJsonResponse = new JSONObject(articleJSON);
+            JSONObject response = baseJsonResponse.getJSONObject("response");
+
+
             //find the "results" array
-            JSONArray results = baseJsonResponse.getJSONArray("results");
+            JSONArray results = response.getJSONArray("results");
             //loop through the features to find all the news section, title and date
-            for (int i = 0; i< results.length(); i++){
-                
+            for (int i = 0; i < results.length(); i++) {
+
                 //find the current news, using the index i into  JSON Object
                 JSONObject currentNews = results.getJSONObject(i);
 
@@ -145,7 +151,7 @@ public final class Utils {
                 String date = currentNews.getString("webPublicationDate");
 
                 // Extract the value for the key called "url"
-                String url = currentNews.getString("webURL");
+                String url = currentNews.getString("webUrl");
 
 
                 //create a new Article object
@@ -159,7 +165,7 @@ public final class Utils {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the article JSON results", e);
+            Log.e("ArticleUtils", "Problem parsing the article JSON results", e);
         }
 
         // Return the ArrayList of articles
