@@ -89,6 +89,11 @@ public class NewsAdapter extends ArrayAdapter<Article> {
             dateView.setText(currentArticle.getDate());
         }
 
+        // Find the TextView with view ID author
+        TextView authorView = listItemView.findViewById(R.id.author);
+        // Display the author of the current article in that TextView
+        authorView.setText(currentArticle.getAuthor());
+
         // Set the proper background color on the section circle.
         // Fetch the background from the TextView, which is a GradientDrawable.
         GradientDrawable sectionCircle = (GradientDrawable) sectionView.getBackground();

@@ -10,5 +10,6 @@
     <dimen name="date_margin_top"> 3dp </dimen>
     <dimen name="date_margin_bottom"> 12dp </dimen>
     <dimen name="title_margin_end_right"> 16dp </dimen>
+    <dimen name="author_margin_left"> 100dp </dimen>
 
 </resources>

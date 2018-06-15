@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL for the articles
      */
     private static final String ARTICLES_REQUEST_URL =
-            "https://content.guardianapis.com/search?q=simon%20halep&api-key=test";
-
+            "https://content.guardianapis.com/search?show-tags=contributor&q=simona%20halep&api-key=test";
     /**
      * Adapter for the list of articles
      */
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Article currentArticle = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri articleUri = Uri.parse(currentArticle.getUrl());
+                Uri articleUri = Uri.parse(currentArticle.getURL());
 
                 // Create a new intent to view the earthquake URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
