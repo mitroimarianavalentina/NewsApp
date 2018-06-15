@@ -27,6 +27,8 @@ public class ArticleUtils {
      * Tag for the log messages
      */
     private static final String LOG_TAG = ArticleUtils.class.getName();
+    private static final int SET_READ_TIMEOUT = 10000;
+    private static final int SET_CONNECT_TIMEOUT = 15000;
 
     /**
      * Create a private constructor because no one should ever create a {@link ArticleUtils} object.
@@ -63,14 +65,14 @@ public class ArticleUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(SET_READ_TIMEOUT /* 10000 milliseconds */);
+            urlConnection.setConnectTimeout(SET_CONNECT_TIMEOUT /* 15000 milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
-            // If the request was successful (response code 200),
+            // If the request was successful (response code 200 = HttpURLConnection.HTTP_OK),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -153,9 +155,25 @@ public class ArticleUtils {
                 // Extract the value for the key called "url"
                 String url = currentNews.getString("webUrl");
 
+                //get the "tags" array
+                JSONArray tags = currentNews.getJSONArray("tags");
+
+                //find the webTitle, using the index 2 into  JSON Object
+                JSONObject currentTag = tags.getJSONObject(0);
+
+                //variable to hold the name of the author
+                String author;
+
+                if (currentTag.getString("webTitle") == null){
+                    //extract the name of the author
+                     author = "N/A";
+                }else {
+                    //extract the name of the author
+                     author = currentTag.getString("webTitle");
+                }
 
                 //create a new Article object
-                Article article = new Article(section, title, date, url);
+                Article article = new Article(section, title, date, url, author);
 
                 //add this article object to the ArrayList - articles
                 articles.add(article);
