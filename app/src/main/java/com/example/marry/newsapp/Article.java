@@ -1,49 +1,49 @@
 package com.example.marry.newsapp;
 
 public class Article {
-    //variable to hold the data about the Section
-    private String Section;
-    //variable to hold the data about the Title
-    private String Title;
-    //variable to hold the data about the Date
-    private String Date;
+    //variable to hold the data about the section
+    private String section;
+    //variable to hold the data about the title
+    private String title;
+    //variable to hold the data about the date
+    private String date;
     //variable to hold the data about the Url
-    private String URL;
+    private String url;
     //variable to hold the data about the author
-    private  String Author;
+    private  String author;
 
 
     //the constructor of the class
     public Article(String section, String title, String date, String url, String author) {
-        Section = section;
-        Title = title;
-        Date = date;
-        URL = url;
-        Author = author;
+        this.section = section;
+        this.title = title;
+        this.date = date;
+        this.url = url;
+        this.author = author;
     }
 
-    //method to get the info about the Section
+    //method to get the info about the section
     public String getSection() {
-        return Section;
+        return section;
     }
 
-    //method to get the info about the Title
+    //method to get the info about the title
     public String getTitle() {
-        return Title;
+        return title;
     }
 
-    //method to get the info about the Date
+    //method to get the info about the date
     public String getDate() {
-        return Date;
+        return date;
     }
 
-    //method to get the info about the URL
-    public String getURL() {
-        return URL;
+    //method to get the info about the url
+    public String getUrl() {
+        return url;
     }
 
     //method to get the info about the author
     public String getAuthor() {
-        return Author;
+        return author;
     }
 }

@@ -164,12 +164,12 @@ public class ArticleUtils {
                 //variable to hold the name of the author
                 String author;
 
-                if (currentTag.getString("webTitle") == null){
+                if (currentTag.getString("webTitle") == null) {
                     //extract the name of the author
-                     author = "N/A";
-                }else {
+                    author = "N/A";
+                } else {
                     //extract the name of the author
-                     author = currentTag.getString("webTitle");
+                    author = currentTag.getString("webTitle");
                 }
 
                 //create a new Article object

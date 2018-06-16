@@ -35,13 +35,58 @@ public class NewsAdapter extends ArrayAdapter<Article> {
         int contextColorResourceId;
         switch (section) {
             case "Sport":
-                contextColorResourceId = R.color.sport_section;
+                contextColorResourceId = R.color.Sport_section;
+                break;
+            case "Books":
+                contextColorResourceId = R.color.Books_section;
+                break;
+            case "Media":
+                contextColorResourceId = R.color.Media_section;
+                break;
+            case "Technology":
+                contextColorResourceId = R.color.Technology_section;
+                break;
+            case "Opinion":
+                contextColorResourceId = R.color.Opinion_section;
+                break;
+            case "Life and style":
+                contextColorResourceId = R.color.Life_and_style_section;
+                break;
+            case "News":
+                contextColorResourceId = R.color.News_section;
+                break;
+            case "US news":
+                contextColorResourceId = R.color.US_news_section;
+                break;
+            case "World news":
+                contextColorResourceId = R.color.World_news_section;
+                break;
+            case "Games":
+                contextColorResourceId = R.color.Games_section;
+                break;
+            case "Science":
+                contextColorResourceId = R.color.Science_section;
+                break;
+            case "Education":
+                contextColorResourceId = R.color.Education_section;
+                break;
+            case "Music":
+                contextColorResourceId = R.color.Music_section;
+                break;
+            case "Fashion":
+                contextColorResourceId = R.color.Fashion_section;
+                break;
+            case "Television and radio":
+                contextColorResourceId = R.color.Television_and_radio_section;
+                break;
+            case "Football":
+                contextColorResourceId = R.color.Football_section;
                 break;
             default:
                 contextColorResourceId = R.color.other_sections;
                 break;
         }
-        //returneaza magnitudeCoolorResourceId ca un integer ca sa poata fi folosit si afisat in GradientDrawable,
+        //returns the contextColorResourceId as an integer, so it can be used and displayed in GradientDrawable,
         return ContextCompat.getColor(getContext(), contextColorResourceId);
     }
 

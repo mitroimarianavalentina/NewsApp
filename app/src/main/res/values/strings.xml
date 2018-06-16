@@ -8,5 +8,30 @@
     <string name="no_internet_connection">No internet connection.</string>
     <string name="no_articles">No articles found.</string>
     <string name="textview">TextView</string>
+
+
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">Article Settings</string>
+
+    <string name="settings_choose_topic_label">Choose the topic</string>
+    <string name="settings_choose_topic_key" translatable="false">topic</string>
+    <string name="settings_topic_default" translatable="false">Simona Halep</string>
+
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order the articles by</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_newest_value</string>
+
+    <!-- Label for order-by newest option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_newest_label">Newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+
+
+    <!-- Label for order-by relevance option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
+
+
 </resources>
 

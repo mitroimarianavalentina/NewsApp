@@ -3,12 +3,29 @@
     <color name="colorPrimary">#2B3D4D</color>
     <color name="colorPrimaryDark">#2B3D4D</color>
     <color name="colorAccent">#FF4081</color>
-    
-    <color name="sport_section"> #2B3D4D </color>
+
     <color name="other_sections"> #E75F40 </color>
-    <color name="section"> #2B3D4D </color>
     <color name="background"> #f9ffe5 </color>
     <color name="separator"> #8c8c8c </color>
     <color name="title_color"> #000000 </color>
     <color name="section_color"> #ffffff </color>
+
+    <color name="Sport_section"> #007399 </color>
+    <color name="Books_section"> #990000 </color>
+    <color name="Media_section"> #0c270c </color>
+    <color name="Technology_section"> #009999 </color>
+    <color name="Opinion_section"> #cc6600 </color>
+    <color name="Life_and_style_section"> #FF4081 </color>
+    <color name="News_section"> #997300 </color>
+    <color name="US_news_section"> 	#4d9900 </color>
+    <color name="UK_news_section"> #00994d </color>
+    <color name="World_news_section"> #990000 </color>
+    <color name="Games_section"> #0c270c </color>
+    <color name="Science_section"> #55552b </color>
+    <color name="Education_section"> #3d3d5c </color>
+    <color name="Music_section"> #99004d </color>
+    <color name="Fashion_section"> #730099 </color>
+    <color name="Television_and_radio_section"> #660033 </color>
+    <color name="Football_section"> #123a12 </color>
+
 </resources>

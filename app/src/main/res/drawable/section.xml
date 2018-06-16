@@ -2,9 +2,9 @@
 <!-- Background circle for the magnitude value -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/section" />
+    <solid android:color="@color/Sport_section" />
     <size
-        android:width="36dp"
-        android:height="76dp" />
+        android:width="46dp"
+        android:height="100dp" />
     <corners android:radius="18dp" />
 </shape>
